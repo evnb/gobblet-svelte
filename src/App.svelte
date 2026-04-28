@@ -45,6 +45,8 @@
 <style>
   :global(*, *::before, *::after) { box-sizing: border-box; margin: 0; padding: 0; }
 
+  :global(:root) { --cell: 90px; }
+
   :global(body) {
     min-height: 100vh;
     display: flex;
@@ -55,9 +57,21 @@
     background: #1a1a2e;
     font-family: 'Segoe UI', sans-serif;
     color: #eee;
+    padding: 16px;
+  }
+
+  :global(button) {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   h1 { font-size: 2rem; letter-spacing: 0.06em; color: #ccc; }
+
+  @media (max-width: 640px) {
+    :global(:root) { --cell: clamp(60px, calc((100vw - 50px) / 4), 90px); }
+    :global(body) { justify-content: flex-start; gap: 10px; padding: 12px 8px; }
+    h1 { font-size: 1.5rem; }
+  }
 
   .status {
     font-size: 1.05rem;
@@ -71,10 +85,14 @@
     gap: 22px;
   }
 
+  @media (max-width: 640px) {
+    .game-area { flex-direction: column; gap: 10px; }
+  }
+
   .board {
     display: grid;
-    grid-template-columns: repeat(4, 90px);
-    grid-template-rows: repeat(4, 90px);
+    grid-template-columns: repeat(4, var(--cell));
+    grid-template-rows: repeat(4, var(--cell));
     gap: 6px;
     padding: 8px;
     background: #0f3460;

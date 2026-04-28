@@ -1,8 +1,9 @@
 <script>
-  import { PX } from './gameStore.js';
   export let player;
   export let size;
   export let selected = false;
+
+  const SCALE = [0.29, 0.51, 0.71, 0.91];
 </script>
 
 <div
@@ -10,7 +11,7 @@
   class:p0={player === 0}
   class:p1={player === 1}
   class:sel={selected}
-  style="width:{PX[size-1]}px; height:{PX[size-1]}px"
+  style="--sz:{SCALE[size - 1]}"
 ></div>
 
 <style>
@@ -19,6 +20,8 @@
     border-radius: 50%;
     pointer-events: none;
     transition: transform 0.1s;
+    width: calc(var(--cell) * var(--sz));
+    height: calc(var(--cell) * var(--sz));
   }
   .p0 {
     background: radial-gradient(circle at 36% 30%, #ffaabf, #e94560, #9b1c36);

@@ -1,6 +1,5 @@
 import { writable, derived } from 'svelte/store';
 
-export const PX = [26, 46, 64, 82];
 export const PLAYER_NAMES = ['Red', 'Blue'];
 export const PLAYER_COLORS = ['#ffaabf', '#93ddf9'];
 

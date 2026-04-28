@@ -29,7 +29,7 @@
 
 <style>
   .cell {
-    width: 90px; height: 90px;
+    width: var(--cell); height: var(--cell);
     background: #16213e;
     border: none;
     border-radius: 9px;
